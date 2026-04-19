@@ -155,7 +155,7 @@ export function AdminPage({
   const currentChat = workspace.chatDetail;
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.16),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.14),_transparent_35%),linear-gradient(180deg,#020617_0%,#0f172a_100%)] text-slate-100">
+    <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen max-w-[1600px] gap-6 p-4 lg:p-6">
         <Sidebar
           userName={sessionUser.name}
@@ -169,8 +169,8 @@ export function AdminPage({
             <Card.Content>
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <p className="text-xs uppercase text-cyan-200/70">Управление обращениями</p>
-                  <h1 className="text-2xl font-semibold text-white">{SECTION_TITLES[currentSection]}</h1>
+                  <p className="text-xs uppercase">Управление обращениями</p>
+                  <h1 className="text-2xl font-semibold">{SECTION_TITLES[currentSection]}</h1>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   {connectedChannels.map((channel) => (
@@ -188,7 +188,7 @@ export function AdminPage({
                     className={({ isActive }) =>
                       [
                         'rounded-full px-4 py-2 text-sm font-medium transition',
-                        isActive ? 'bg-cyan-400 text-slate-950' : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
+                        isActive ? 'ring-1' : ''
                       ].join(' ')
                     }
                   >

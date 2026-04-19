@@ -14,18 +14,18 @@ type LoginPageProps = {
 
 export function LoginPage({ email, password, loading, error, onEmailChange, onPasswordChange, onSubmit }: LoginPageProps) {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.20),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.16),_transparent_30%),linear-gradient(180deg,#020617_0%,#0f172a_100%)] text-slate-100">
+    <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen max-w-6xl items-center px-4 py-10">
         <div className="grid w-full gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <Card>
             <Card.Content>
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/20 text-cyan-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl">
                   <Bot className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-sm uppercase text-cyan-200/70">Bot CRM</p>
-                  <h1 className="text-3xl font-semibold text-white">Операторская панель для Telegram и MAX</h1>
+                  <p className="text-sm uppercase">Bot CRM</p>
+                  <h1 className="text-3xl font-semibold">Операторская панель для Telegram и MAX</h1>
                 </div>
               </div>
 
@@ -37,21 +37,21 @@ export function LoginPage({ email, password, loading, error, onEmailChange, onPa
                 ].map(([value, label]) => (
                   <Card key={value}>
                     <Card.Content>
-                      <p className="text-2xl font-semibold text-white">{value}</p>
-                      <p className="text-sm text-slate-300">{label}</p>
+                      <p className="text-2xl font-semibold">{value}</p>
+                      <p className="text-sm">{label}</p>
                     </Card.Content>
                   </Card>
                 ))}
               </div>
 
-              <div className="grid gap-3 text-sm text-slate-300">
+              <div className="grid gap-3 text-sm">
                 {[
                   'Очередь чатов, карточка клиента и быстрые действия в одном экране',
                   'FAQ, сценарии, клиника, интеграции и аналитика уже подключены к backend',
                   'Шаблон рассчитан на быстрый старт: логин, токены ботов и база данных'
                 ].map((text) => (
-                  <div key={text} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-400" />
+                  <div key={text} className="flex items-start gap-3 rounded-2xl border p-4">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5" />
                     <span>{text}</span>
                   </div>
                 ))}

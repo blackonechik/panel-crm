@@ -31,8 +31,8 @@ export function SettingsSection({
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Клиника</p>
-            <h2 className="text-xl font-semibold text-white">Профиль и тексты</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Клиника</p>
+            <h2 className="text-xl font-semibold">Профиль и тексты</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -71,7 +71,7 @@ export function SettingsSection({
               </Button>
             </>
           ) : (
-            <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4 text-slate-300">Профиль клиники не загружен</div>
+            <div className="rounded-3xl border p-4">Профиль клиники не загружен</div>
           )}
         </Card.Content>
       </Card>
@@ -80,16 +80,16 @@ export function SettingsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Интеграции</p>
-              <h2 className="text-xl font-semibold text-white">Telegram / MAX</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Интеграции</p>
+              <h2 className="text-xl font-semibold">Telegram / MAX</h2>
             </div>
           </Card.Header>
           <Card.Content>
             {integrations.map((integration) => (
-              <div key={integration.id} className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={integration.id} className="flex items-center justify-between gap-3 rounded-3xl border p-4">
                 <div>
-                  <p className="font-medium text-white">{integration.key}</p>
-                  <p className="text-sm text-slate-400">{integration.isEnabled ? 'включено' : 'выключено'}</p>
+                  <p className="font-medium">{integration.key}</p>
+                  <p className="text-sm">{integration.isEnabled ? 'включено' : 'выключено'}</p>
                 </div>
                 <Chip size="sm" variant="soft" color={integration.isEnabled ? 'success' : 'default'}>
                   {integration.isEnabled ? 'online' : 'offline'}
@@ -102,17 +102,17 @@ export function SettingsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Команда</p>
-              <h2 className="text-xl font-semibold text-white">Пользователи и роли</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Команда</p>
+              <h2 className="text-xl font-semibold">Пользователи и роли</h2>
             </div>
           </Card.Header>
           <Card.Content>
             <div className="grid gap-2">
               {users.map((user) => (
-                <div key={user.id} className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+                <div key={user.id} className="flex items-center justify-between gap-3 rounded-3xl border p-4">
                   <div>
-                    <p className="font-medium text-white">{user.name}</p>
-                    <p className="text-sm text-slate-400">{user.email}</p>
+                    <p className="font-medium">{user.name}</p>
+                    <p className="text-sm">{user.email}</p>
                   </div>
                   <Chip size="sm" variant="soft" color="accent">
                     {user.role.name}
@@ -123,14 +123,14 @@ export function SettingsSection({
 
             <div className="grid gap-2">
               {roles.map((role) => (
-                <div key={role.id} className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+                <div key={role.id} className="rounded-3xl border p-4">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="font-medium text-white">{role.name}</p>
+                    <p className="font-medium">{role.name}</p>
                     <Chip size="sm" variant="soft" color="default">
                       {role.permissions.length} прав
                     </Chip>
                   </div>
-                  <p className="mt-2 text-sm text-slate-400">{role.description ?? 'Описание не задано'}</p>
+                  <p className="mt-2 text-sm">{role.description ?? 'Описание не задано'}</p>
                 </div>
               ))}
             </div>
@@ -140,21 +140,21 @@ export function SettingsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">События</p>
-              <h2 className="text-xl font-semibold text-white">Последние уведомления</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">События</p>
+              <h2 className="text-xl font-semibold">Последние уведомления</h2>
             </div>
           </Card.Header>
           <Card.Content>
             {notifications.slice(0, 5).map((notification) => (
-              <div key={notification.id} className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={notification.id} className="rounded-3xl border p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-medium text-white">{notification.title}</p>
+                  <p className="font-medium">{notification.title}</p>
                   <Chip size="sm" variant="soft" color={notification.isRead ? 'default' : 'warning'}>
                     {notification.isRead ? 'read' : 'new'}
                   </Chip>
                 </div>
-                <p className="mt-2 text-sm text-slate-400">{notification.body}</p>
-                <p className="mt-3 text-xs text-slate-500">{formatDateTime(notification.createdAt)}</p>
+                <p className="mt-2 text-sm">{notification.body}</p>
+                <p className="mt-3 text-xs">{formatDateTime(notification.createdAt)}</p>
               </div>
             ))}
           </Card.Content>

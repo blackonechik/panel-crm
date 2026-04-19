@@ -16,12 +16,12 @@ export function Sidebar({ userName, userRole, permissions, onLogout }: SidebarPr
       <Card>
         <Card.Content>
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400/20 text-cyan-300">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl">
               <span className="text-lg font-semibold">B</span>
             </div>
             <div>
-              <p className="text-xs uppercase text-cyan-200/70">Bot CRM</p>
-              <p className="font-semibold text-white">Панель оператора</p>
+              <p className="text-xs uppercase">Bot CRM</p>
+              <p className="font-semibold">Панель оператора</p>
             </div>
           </div>
 
@@ -33,7 +33,7 @@ export function Sidebar({ userName, userRole, permissions, onLogout }: SidebarPr
                 className={({ isActive }) =>
                   [
                     'rounded-2xl px-4 py-3 text-sm font-medium transition',
-                    isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-300/30' : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
+                    isActive ? 'ring-1' : ''
                   ].join(' ')
                 }
               >
@@ -42,17 +42,17 @@ export function Sidebar({ userName, userRole, permissions, onLogout }: SidebarPr
             ))}
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-slate-950/60 p-4">
+          <div className="rounded-3xl border p-4">
             <div className="flex items-center gap-3">
               <Avatar>
                 <Avatar.Fallback>{initials(userName)}</Avatar.Fallback>
               </Avatar>
               <div className="min-w-0">
-                <p className="truncate font-medium text-white">{userName}</p>
-                <p className="truncate text-sm text-slate-400">{userRole}</p>
+                <p className="truncate font-medium">{userName}</p>
+                <p className="truncate text-sm">{userRole}</p>
               </div>
             </div>
-            <p className="mt-4 text-xs uppercase tracking-[0.22em] text-slate-500">Права доступа</p>
+            <p className="mt-4 text-xs uppercase tracking-[0.22em]">Права доступа</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {permissions.slice(0, 6).map((permission) => (
                 <Chip key={permission} size="sm" variant="soft" color="accent">

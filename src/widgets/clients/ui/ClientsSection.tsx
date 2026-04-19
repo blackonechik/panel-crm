@@ -34,8 +34,8 @@ export function ClientsSection({ clients, onSaveClient, selectedClientId = null,
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Клиенты</p>
-            <h2 className="text-xl font-semibold text-white">База клиентов</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Клиенты</p>
+            <h2 className="text-xl font-semibold">База клиентов</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -45,15 +45,15 @@ export function ClientsSection({ clients, onSaveClient, selectedClientId = null,
               key={client.id}
               type="button"
               onClick={() => onSelectClient?.(client.id)}
-              className={`rounded-3xl border p-4 text-left transition ${selectedClient?.id === client.id ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-white/10 bg-slate-950/50 hover:bg-slate-950/70'}`}
+              className={`rounded-3xl border p-4 text-left transition ${selectedClient?.id === client.id ? 'ring-1' : ''}`}
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-cyan-400/15 text-sm font-semibold text-cyan-100">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-semibold">
                   {initials(client.fullName ?? client.username ?? client.email)}
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate font-medium text-white">{client.fullName ?? 'Без имени'}</p>
-                  <p className="truncate text-sm text-slate-400">{client.phone ?? client.email ?? client.username ?? 'Нет контакта'}</p>
+                  <p className="truncate font-medium">{client.fullName ?? 'Без имени'}</p>
+                  <p className="truncate text-sm">{client.phone ?? client.email ?? client.username ?? 'Нет контакта'}</p>
                 </div>
               </div>
             </button>
@@ -64,8 +64,8 @@ export function ClientsSection({ clients, onSaveClient, selectedClientId = null,
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Карточка клиента</p>
-            <h2 className="text-xl font-semibold text-white">{draft?.fullName ?? 'Выберите клиента'}</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Карточка клиента</p>
+            <h2 className="text-xl font-semibold">{draft?.fullName ?? 'Выберите клиента'}</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -93,7 +93,7 @@ export function ClientsSection({ clients, onSaveClient, selectedClientId = null,
               </Button>
             </>
           ) : (
-            <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4 text-slate-300">Клиенты не найдены</div>
+            <div className="rounded-3xl border p-4">Клиенты не найдены</div>
           )}
         </Card.Content>
       </Card>

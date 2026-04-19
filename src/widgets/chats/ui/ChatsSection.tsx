@@ -99,8 +99,8 @@ export function ChatsSection({
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Очередь</p>
-            <h2 className="text-xl font-semibold text-white">Все чаты</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Очередь</p>
+            <h2 className="text-xl font-semibold">Все чаты</h2>
           </div>
           <Chip variant="soft" color="accent">
             {filteredChats.length}
@@ -109,7 +109,7 @@ export function ChatsSection({
         <Card.Content>
           <Input aria-label="Поиск чатов" placeholder="Имя, телефон, username, канал" value={search} onChange={(event) => setSearch(event.target.value)} />
           <div className="grid gap-3 md:grid-cols-2">
-            <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+            <select className="rounded-2xl border px-4 py-3" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
               <option value="">Все статусы</option>
               {CHAT_STATUS_OPTIONS.map((option) => (
                 <option key={option} value={option}>
@@ -117,17 +117,17 @@ export function ChatsSection({
                 </option>
               ))}
             </select>
-            <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={channelFilter} onChange={(event) => setChannelFilter(event.target.value)}>
+            <select className="rounded-2xl border px-4 py-3" value={channelFilter} onChange={(event) => setChannelFilter(event.target.value)}>
               <option value="">Все каналы</option>
               <option value="TELEGRAM">Telegram</option>
               <option value="MAX">MAX</option>
             </select>
-            <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={assignedFilter} onChange={(event) => setAssignedFilter(event.target.value)}>
+            <select className="rounded-2xl border px-4 py-3" value={assignedFilter} onChange={(event) => setAssignedFilter(event.target.value)}>
               <option value="">Все назначения</option>
               <option value="assigned">Назначенные</option>
               <option value="unassigned">Неназначенные</option>
             </select>
-            <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={leadFilter} onChange={(event) => setLeadFilter(event.target.value)}>
+            <select className="rounded-2xl border px-4 py-3" value={leadFilter} onChange={(event) => setLeadFilter(event.target.value)}>
               <option value="all">Все чаты</option>
               <option value="with">С лидом</option>
               <option value="without">Без лида</option>
@@ -140,17 +140,15 @@ export function ChatsSection({
                 key={item.id}
                 type="button"
                 onClick={() => onSelectChat(item.id)}
-                className={`rounded-3xl border p-4 text-left transition ${
-                  chat?.id === item.id ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-white/10 bg-slate-950/50 hover:bg-slate-950/70'
-                }`}
+                className={`rounded-3xl border p-4 text-left transition ${chat?.id === item.id ? 'ring-1' : ''}`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-medium text-white">{item.client.fullName ?? 'Без имени'}</p>
+                  <p className="font-medium">{item.client.fullName ?? 'Без имени'}</p>
                   <Chip size="sm" variant="soft" color={item.channel === 'TELEGRAM' ? 'accent' : 'default'}>
                     {item.channel}
                   </Chip>
                 </div>
-                <p className="mt-1 truncate text-sm text-slate-400">{item.client.phone ?? item.client.username ?? item.externalChatId}</p>
+                <p className="mt-1 truncate text-sm">{item.client.phone ?? item.client.username ?? item.externalChatId}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Chip size="sm" variant="soft" color={statusChipColor(item.status)}>
                     {item.status}
@@ -169,8 +167,8 @@ export function ChatsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Диалог</p>
-              <h2 className="text-xl font-semibold text-white">{chat?.client.fullName ?? 'Выберите чат'}</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Диалог</p>
+              <h2 className="text-xl font-semibold">{chat?.client.fullName ?? 'Выберите чат'}</h2>
             </div>
             {chat ? (
               <div className="flex flex-wrap gap-2">
@@ -194,29 +192,29 @@ export function ChatsSection({
                   <Card>
                     <Card.Content>
                       <div className="flex flex-wrap gap-3">
-                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Клиент</p>
-                          <p className="font-medium text-white">{chat.client.fullName ?? '—'}</p>
-                          <p className="text-sm text-slate-400">{chat.client.phone ?? chat.client.email ?? 'Нет контакта'}</p>
+                        <div className="rounded-2xl border px-4 py-3">
+                          <p className="text-xs uppercase tracking-[0.2em]">Клиент</p>
+                          <p className="font-medium">{chat.client.fullName ?? '—'}</p>
+                          <p className="text-sm">{chat.client.phone ?? chat.client.email ?? 'Нет контакта'}</p>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Назначен</p>
-                          <p className="font-medium text-white">{chat.assignedUser?.name ?? 'Не назначен'}</p>
-                          <p className="text-sm text-slate-400">{chat.priority}</p>
+                        <div className="rounded-2xl border px-4 py-3">
+                          <p className="text-xs uppercase tracking-[0.2em]">Назначен</p>
+                          <p className="font-medium">{chat.assignedUser?.name ?? 'Не назначен'}</p>
+                          <p className="text-sm">{chat.priority}</p>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Состояние</p>
-                          <p className="font-medium text-white">{chat.conversationState}</p>
-                          <p className="text-sm text-slate-400">{formatDateTime(chat.updatedAt)}</p>
+                        <div className="rounded-2xl border px-4 py-3">
+                          <p className="text-xs uppercase tracking-[0.2em]">Состояние</p>
+                          <p className="font-medium">{chat.conversationState}</p>
+                          <p className="text-sm">{formatDateTime(chat.updatedAt)}</p>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Теги</p>
+                        <div className="rounded-2xl border px-4 py-3">
+                          <p className="text-xs uppercase tracking-[0.2em]">Теги</p>
                           <div className="mt-2 flex flex-wrap gap-2">
                             {chat.tags.length ? chat.tags.map((tag) => (
                               <Chip key={tag} size="sm" variant="soft" color="default">
                                 {tag}
                               </Chip>
-                            )) : <span className="text-sm text-slate-400">Нет тегов</span>}
+                            )) : <span className="text-sm">Нет тегов</span>}
                           </div>
                         </div>
                       </div>
@@ -226,26 +224,26 @@ export function ChatsSection({
                   <Card>
                     <Card.Content>
                       <div className="grid grid-cols-2 gap-3">
-                        <label className="grid gap-2 text-sm text-slate-300">
+                        <label className="grid gap-2 text-sm">
                           <span>Статус чата</span>
-                          <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={chat.status} onChange={(event) => void onStatusChange(event.target.value)}>
+                          <select className="rounded-2xl border px-4 py-3" value={chat.status} onChange={(event) => void onStatusChange(event.target.value)}>
                             {CHAT_STATUS_OPTIONS.map((option) => (
                               <option key={option} value={option}>{option}</option>
                             ))}
                           </select>
                         </label>
-                        <label className="grid gap-2 text-sm text-slate-300">
+                        <label className="grid gap-2 text-sm">
                           <span>Режим</span>
-                          <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={chat.mode} onChange={(event) => void onModeChange(event.target.value)}>
+                          <select className="rounded-2xl border px-4 py-3" value={chat.mode} onChange={(event) => void onModeChange(event.target.value)}>
                             {CHAT_MODE_OPTIONS.map((option) => (
                               <option key={option} value={option}>{option}</option>
                             ))}
                           </select>
                         </label>
                       </div>
-                      <label className="grid gap-2 text-sm text-slate-300">
+                      <label className="grid gap-2 text-sm">
                         <span>Назначить сотруднику</span>
-                        <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={chat.assignedUser?.id ?? ''} onChange={(event) => void onAssignChat(event.target.value)}>
+                        <select className="rounded-2xl border px-4 py-3" value={chat.assignedUser?.id ?? ''} onChange={(event) => void onAssignChat(event.target.value)}>
                           <option value="">Не назначен</option>
                           {assignableUsers.map((user) => (
                             <option key={user.id} value={user.id}>{user.name} · {user.role.name}</option>
@@ -259,36 +257,36 @@ export function ChatsSection({
                 <div className="grid gap-4 xl:grid-cols-[1fr_320px]">
                   <Card>
                     <Card.Header>
-                      <h3 className="text-lg font-semibold text-white">Сообщения</h3>
+                      <h3 className="text-lg font-semibold">Сообщения</h3>
                     </Card.Header>
                     <Card.Content>
                       <div className="max-h-[560px] space-y-3 overflow-auto pr-1">
                         {chat.messages.map((message) => (
                           <div key={message.id} className={`flex ${message.direction === 'OUTBOUND' ? 'justify-end' : 'justify-start'}`}>
                             <div className={`max-w-[80%] rounded-3xl border px-4 py-3 ${
-                              message.direction === 'OUTBOUND'
-                                ? 'border-cyan-400/20 bg-cyan-400/10 text-cyan-50'
+                            message.direction === 'OUTBOUND'
+                                ? 'ring-1'
                                 : message.direction === 'INTERNAL'
-                                  ? 'border-amber-400/20 bg-amber-400/10 text-amber-50'
-                                  : 'border-white/10 bg-white/5 text-slate-100'
+                                  ? 'border-dashed'
+                                  : ''
                             }`}>
                               <p className="whitespace-pre-wrap text-sm leading-6">{message.text}</p>
-                              <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-slate-400">{message.direction} · {formatDateTime(message.createdAt)}</p>
+                              <p className="mt-2 text-[11px] uppercase tracking-[0.18em]">{message.direction} · {formatDateTime(message.createdAt)}</p>
                             </div>
                           </div>
                         ))}
                       </div>
 
-                      <div className="grid gap-3 rounded-3xl border border-white/10 bg-slate-950/60 p-4">
+                      <div className="grid gap-3 rounded-3xl border p-4">
                         <TextArea aria-label="Ответ клиенту" placeholder="Ответ клиенту" value={chatMessage} onChange={(event) => setChatMessage(event.target.value)} rows={3} variant="secondary" />
-                        <div className="grid gap-2 rounded-2xl border border-dashed border-white/10 bg-white/5 p-3">
+                        <div className="grid gap-2 rounded-2xl border border-dashed p-3">
                           <input
                             aria-label="Файл"
                             type="file"
                             onChange={(event) => setAttachmentName(event.target.files?.[0]?.name ?? '')}
-                            className="block w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-slate-100 file:mr-4 file:rounded-xl file:border-0 file:bg-cyan-400 file:px-3 file:py-2 file:text-sm file:font-medium file:text-slate-950"
+                            className="block w-full rounded-2xl border px-4 py-3 text-sm file:mr-4 file:rounded-xl file:border-0 file:px-3 file:py-2 file:text-sm file:font-medium"
                           />
-                          <p className="text-xs text-slate-400">{attachmentName ? `Выбран файл: ${attachmentName}` : 'Файлы можно прикреплять при поддержке канала'}</p>
+                          <p className="text-xs">{attachmentName ? `Выбран файл: ${attachmentName}` : 'Файлы можно прикреплять при поддержке канала'}</p>
                         </div>
                         <div className="flex flex-wrap gap-2">
                           <Button variant="primary" onPress={() => void onSendMessage()}>Отправить</Button>
@@ -303,25 +301,25 @@ export function ChatsSection({
 
                   <Card>
                     <Card.Header>
-                      <h3 className="text-lg font-semibold text-white">Карточка клиента</h3>
+                      <h3 className="text-lg font-semibold">Карточка клиента</h3>
                     </Card.Header>
                     <Card.Content>
-                      <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Контакты</p>
-                        <p className="mt-2 text-sm text-white">{chat.client.fullName ?? '—'}</p>
-                        <p className="text-sm text-slate-400">{chat.client.phone ?? 'Телефон не указан'}</p>
-                        <p className="text-sm text-slate-400">{chat.client.email ?? 'Email не указан'}</p>
-                        <p className="text-sm text-slate-400">@{chat.client.username ?? 'username не указан'}</p>
+                      <div className="rounded-3xl border p-4">
+                        <p className="text-xs uppercase tracking-[0.2em]">Контакты</p>
+                        <p className="mt-2 text-sm">{chat.client.fullName ?? '—'}</p>
+                        <p className="text-sm">{chat.client.phone ?? 'Телефон не указан'}</p>
+                        <p className="text-sm">{chat.client.email ?? 'Email не указан'}</p>
+                        <p className="text-sm">@{chat.client.username ?? 'username не указан'}</p>
                       </div>
 
-                      <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
-                        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Lead</p>
-                        <p className="mt-2 text-sm text-white">{chat.lead?.status ?? 'Не создан'}</p>
-                        <p className="text-sm text-slate-400">{chat.lead?.interest ?? 'Интерес не указан'}</p>
-                        <p className="text-sm text-slate-400">{chat.lead?.assignedUser?.name ?? 'Назначение не задано'}</p>
+                      <div className="rounded-3xl border p-4">
+                        <p className="text-xs uppercase tracking-[0.2em]">Lead</p>
+                        <p className="mt-2 text-sm">{chat.lead?.status ?? 'Не создан'}</p>
+                        <p className="text-sm">{chat.lead?.interest ?? 'Интерес не указан'}</p>
+                        <p className="text-sm">{chat.lead?.assignedUser?.name ?? 'Назначение не задано'}</p>
                       </div>
 
-                      <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                      <div className="rounded-3xl border p-4">
                         <TextArea aria-label="Внутренняя заметка" placeholder="Внутренняя заметка" value={internalNote} onChange={(event) => setInternalNote(event.target.value)} rows={4} variant="secondary" />
                         <div className="mt-3 flex flex-wrap gap-2">
                           <Button variant="secondary" onPress={() => void onAddNote()}>Добавить заметку</Button>
@@ -332,7 +330,7 @@ export function ChatsSection({
                 </div>
               </>
             ) : (
-              <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-8 text-slate-300">
+              <div className="rounded-3xl border p-8">
                 Выберите чат слева, чтобы открыть переписку, карточку клиента и быстрые действия.
               </div>
             )}

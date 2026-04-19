@@ -249,8 +249,8 @@ export function AppointmentsSection({
           <Card.Header>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Календарь</p>
-                <h2 className="text-xl font-semibold text-white">Выбор слота записи</h2>
+                <p className="text-sm uppercase tracking-[0.22em]">Календарь</p>
+                <h2 className="text-xl font-semibold">Выбор слота записи</h2>
               </div>
               <div className="flex items-center gap-2">
                 <Button variant="secondary" onPress={goPreviousWeek} isDisabled={weekStart === 0}>
@@ -267,7 +267,7 @@ export function AppointmentsSection({
           </Card.Header>
           <Card.Content>
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-              <p className="text-sm text-slate-400">Период: {weekLabel}</p>
+              <p className="text-sm">Период: {weekLabel}</p>
               <Chip variant="soft" color="accent">
                 Свободных слотов: {appointmentSlots.length}
               </Chip>
@@ -288,20 +288,20 @@ export function AppointmentsSection({
                       onClick={() => selectDay(day)}
                       className={[
                         'min-h-[220px] rounded-3xl border p-4 text-left transition',
-                        isSelected ? 'border-cyan-300/50 bg-cyan-400/10 shadow-[0_0_0_1px_rgba(34,211,238,0.15)]' : 'border-white/10 bg-slate-950/40 hover:bg-slate-950/60'
+                        isSelected ? 'ring-1' : ''
                       ].join(' ')}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="text-sm uppercase tracking-[0.18em] text-slate-500">{day.weekdayLabel}</p>
-                          <p className="text-2xl font-semibold text-white">{day.dayLabel}</p>
+                          <p className="text-sm uppercase tracking-[0.18em]">{day.weekdayLabel}</p>
+                          <p className="text-2xl font-semibold">{day.dayLabel}</p>
                         </div>
                         <Chip size="sm" variant="soft" color={hasSlots ? 'accent' : 'default'}>
                           {day.slots.length}
                         </Chip>
                       </div>
 
-                      <p className="mt-2 text-sm text-slate-400">{day.subtitle}</p>
+                      <p className="mt-2 text-sm">{day.subtitle}</p>
 
                       <div className="mt-4 space-y-2">
                         {hasSlots ? (
@@ -312,20 +312,20 @@ export function AppointmentsSection({
                                   key={slot.scheduledAt}
                                   className={[
                                     'rounded-full px-3 py-1 text-xs font-medium',
-                                    scheduledAt === slot.scheduledAt ? 'bg-cyan-300 text-slate-950' : 'bg-white/5 text-slate-200'
+                                    scheduledAt === slot.scheduledAt ? 'ring-1' : ''
                                   ].join(' ')}
                                 >
                                   {slot.label}
                                 </span>
                               ))}
                             </div>
-                            {day.slots.length > 4 ? <p className="text-xs text-slate-500">+ ещё {day.slots.length - 4} окна</p> : null}
-                            <p className="text-xs text-slate-500">
+                            {day.slots.length > 4 ? <p className="text-xs">+ ещё {day.slots.length - 4} окна</p> : null}
+                            <p className="text-xs">
                               {firstSlot?.label} — {lastSlot?.label}
                             </p>
                           </>
                         ) : (
-                          <div className="rounded-2xl border border-dashed border-white/10 px-3 py-4 text-sm text-slate-500">
+                          <div className="rounded-2xl border border-dashed px-3 py-4 text-sm">
                             Нет доступных окон
                           </div>
                         )}
@@ -335,7 +335,7 @@ export function AppointmentsSection({
                 })}
               </div>
             ) : (
-              <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4 text-slate-300">Доступные слоты пока не найдены</div>
+              <div className="rounded-3xl border p-4">Доступные слоты пока не найдены</div>
             )}
           </Card.Content>
         </Card>
@@ -343,8 +343,8 @@ export function AppointmentsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">День</p>
-              <h2 className="text-xl font-semibold text-white">{selectedDay ? selectedDay.subtitle : 'Выберите день'}</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">День</p>
+              <h2 className="text-xl font-semibold">{selectedDay ? selectedDay.subtitle : 'Выберите день'}</h2>
             </div>
           </Card.Header>
           <Card.Content>
@@ -375,31 +375,31 @@ export function AppointmentsSection({
                           onClick={() => selectSlot(slot)}
                           className={[
                             'rounded-2xl border px-4 py-3 text-left transition',
-                            isSelected ? 'border-cyan-300/50 bg-cyan-400/10' : 'border-white/10 bg-slate-950/40 hover:bg-slate-950/60'
+                            isSelected ? 'ring-1' : ''
                           ].join(' ')}
                         >
                           <div className="flex items-start justify-between gap-3">
                             <div>
-                              <p className="font-medium text-white">{slot.label}</p>
-                              <p className="text-sm text-slate-400">{formatDateTime(slot.scheduledAt)}</p>
+                              <p className="font-medium">{slot.label}</p>
+                              <p className="text-sm">{formatDateTime(slot.scheduledAt)}</p>
                             </div>
                             <Chip size="sm" variant="soft" color={slot.doctor ? 'accent' : 'default'}>
                               {slot.doctor ?? 'любой врач'}
                             </Chip>
                           </div>
-                          <p className="mt-2 text-xs text-slate-500">{slot.specialization ?? 'Без специализации'}</p>
+                          <p className="mt-2 text-xs">{slot.specialization ?? 'Без специализации'}</p>
                         </button>
                       );
                     })}
                   </div>
                 ) : (
-                  <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4 text-slate-300">
+                  <div className="rounded-3xl border p-4">
                     На этот день пока нет свободных окон. Можно выбрать другой день в календаре.
                   </div>
                 )}
               </div>
             ) : (
-              <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4 text-slate-300">
+              <div className="rounded-3xl border p-4">
                 Выберите день в календаре.
               </div>
             )}
@@ -409,8 +409,8 @@ export function AppointmentsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Запись</p>
-              <h2 className="text-xl font-semibold text-white">Новая запись</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Запись</p>
+              <h2 className="text-xl font-semibold">Новая запись</h2>
             </div>
           </Card.Header>
           <Card.Content>
@@ -447,22 +447,22 @@ export function AppointmentsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">SLA</p>
-              <h2 className="text-xl font-semibold text-white">Качество реакции</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">SLA</p>
+              <h2 className="text-xl font-semibold">Качество реакции</h2>
             </div>
           </Card.Header>
           <Card.Content>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-              <span className="text-slate-300">Первый ответ</span>
-              <span className="font-semibold text-white">{overview?.sla.averageFirstResponseMinutes ?? 0} мин</span>
+            <div className="flex items-center justify-between rounded-2xl border p-4">
+              <span>Первый ответ</span>
+              <span className="font-semibold">{overview?.sla.averageFirstResponseMinutes ?? 0} мин</span>
             </div>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-              <span className="text-slate-300">В ожидании менеджера</span>
-              <span className="font-semibold text-white">{overview?.chats.waitingManager ?? 0}</span>
+            <div className="flex items-center justify-between rounded-2xl border p-4">
+              <span>В ожидании менеджера</span>
+              <span className="font-semibold">{overview?.chats.waitingManager ?? 0}</span>
             </div>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-              <span className="text-slate-300">Записей всего</span>
-              <span className="font-semibold text-white">{overview?.appointments.total ?? appointments.length}</span>
+            <div className="flex items-center justify-between rounded-2xl border p-4">
+              <span>Записей всего</span>
+              <span className="font-semibold">{overview?.appointments.total ?? appointments.length}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {(['REQUESTED', 'WAITING_CONFIRMATION', 'CONFIRMED', 'RESCHEDULED', 'CANCELLED'] as const).map((status) => (
@@ -477,20 +477,20 @@ export function AppointmentsSection({
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Записи</p>
-              <h2 className="text-xl font-semibold text-white">Текущие appointments</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Записи</p>
+              <h2 className="text-xl font-semibold">Текущие appointments</h2>
             </div>
           </Card.Header>
           <Card.Content>
             {appointments.slice(0, 8).map((appointment) => (
-              <div key={appointment.id} className="grid gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={appointment.id} className="grid gap-3 rounded-3xl border p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="font-medium text-white">{appointment.service}</p>
-                    <p className="text-sm text-slate-400">
+                    <p className="font-medium">{appointment.service}</p>
+                    <p className="text-sm">
                       {appointment.client?.fullName ?? 'Без клиента'} · {appointment.doctor ?? 'любой врач'}
                     </p>
-                    <p className="text-sm text-slate-400">{formatDateTime(appointment.scheduledAt)}</p>
+                    <p className="text-sm">{formatDateTime(appointment.scheduledAt)}</p>
                   </div>
                   <Chip size="sm" variant="soft" color={appointment.status === 'CONFIRMED' ? 'success' : appointment.status === 'CANCELLED' ? 'danger' : 'accent'}>
                     {appointment.status}
@@ -529,7 +529,7 @@ export function AppointmentsSection({
                     Перенести
                   </Button>
                 </div>
-                {appointment.comment ? <p className="text-sm text-slate-400">{appointment.comment}</p> : null}
+                {appointment.comment ? <p className="text-sm">{appointment.comment}</p> : null}
               </div>
             ))}
           </Card.Content>

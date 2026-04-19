@@ -22,9 +22,9 @@ export function LoginForm({
   return (
     <Card>
       <Card.Header>
-        <p className="text-sm uppercase tracking-[0.24em] text-slate-500">Вход в систему</p>
+        <p className="text-sm uppercase tracking-[0.24em]">Вход в систему</p>
         <h2 className="text-2xl font-semibold">Зайти в панель</h2>
-        <p className="text-sm text-slate-500">Для первого входа используй seed-аккаунт из backend.</p>
+        <p className="text-sm">Для первого входа используй seed-аккаунт из backend.</p>
       </Card.Header>
       <Card.Content>
         <Input aria-label="Email" placeholder="Email" value={email} onChange={(event) => onEmailChange(event.target.value)} />
@@ -36,7 +36,7 @@ export function LoginForm({
           onChange={(event) => onPasswordChange(event.target.value)}
         />
         {error ? (
-          <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{error}</div>
+          <div className="rounded-2xl border px-4 py-3 text-sm">{error}</div>
         ) : null}
         <Button variant="primary" size="lg" isPending={loading} onPress={onSubmit}>
           Войти
@@ -44,8 +44,8 @@ export function LoginForm({
         <Button variant="ghost" size="sm" isDisabled>
           Восстановить пароль
         </Button>
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
-          <p className="font-medium text-slate-700">Стартовый аккаунт</p>
+        <div className="rounded-2xl border p-4 text-sm">
+          <p className="font-medium">Стартовый аккаунт</p>
           <p>admin@local.dev</p>
           <p>admin12345</p>
         </div>

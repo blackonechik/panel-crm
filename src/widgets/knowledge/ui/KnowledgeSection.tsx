@@ -39,8 +39,8 @@ export function KnowledgeSection({
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">FAQ</p>
-            <h2 className="text-xl font-semibold text-white">База знаний</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">FAQ</p>
+            <h2 className="text-xl font-semibold">База знаний</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -61,9 +61,9 @@ export function KnowledgeSection({
 
           <div className="grid gap-3">
             {faqItems.map((item) => (
-              <div key={item.id} className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={item.id} className="rounded-3xl border p-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-medium text-white">{item.question}</p>
+                  <p className="font-medium">{item.question}</p>
                   <Chip size="sm" variant="soft" color={item.isActive ? 'success' : 'default'}>
                     {item.isActive ? 'активен' : 'скрыт'}
                   </Chip>
@@ -71,7 +71,7 @@ export function KnowledgeSection({
                     {item.usageCount} uses
                   </Chip>
                 </div>
-                <p className="mt-2 text-sm text-slate-400">{item.answer}</p>
+                <p className="mt-2 text-sm">{item.answer}</p>
               </div>
             ))}
           </div>
@@ -81,8 +81,8 @@ export function KnowledgeSection({
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Сценарии</p>
-            <h2 className="text-xl font-semibold text-white">Диалоговые ветки</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Сценарии</p>
+            <h2 className="text-xl font-semibold">Диалоговые ветки</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -104,9 +104,9 @@ export function KnowledgeSection({
 
           <div className="grid gap-3">
             {scenarios.map((scenario) => (
-              <div key={scenario.id} className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={scenario.id} className="rounded-3xl border p-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-medium text-white">{scenario.title}</p>
+                  <p className="font-medium">{scenario.title}</p>
                   <Chip size="sm" variant="soft" color={scenario.isActive ? 'success' : 'default'}>
                     {scenario.isActive ? 'активен' : 'выключен'}
                   </Chip>
@@ -114,7 +114,7 @@ export function KnowledgeSection({
                     {scenario.code}
                   </Chip>
                 </div>
-                <p className="mt-2 text-sm text-slate-400">{scenario.description ?? 'Описание не задано'}</p>
+                <p className="mt-2 text-sm">{scenario.description ?? 'Описание не задано'}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {scenario.triggerPhrases.slice(0, 4).map((phrase) => (
                     <Chip key={phrase} size="sm" variant="soft" color="default">

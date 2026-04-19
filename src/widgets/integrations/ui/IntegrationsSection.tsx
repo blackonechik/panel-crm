@@ -24,8 +24,8 @@ export function IntegrationsSection({ integrations, onSaveIntegration }: Integra
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Интеграции</p>
-            <h2 className="text-xl font-semibold text-white">Каналы и сервисы</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Интеграции</p>
+            <h2 className="text-xl font-semibold">Каналы и сервисы</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -34,10 +34,10 @@ export function IntegrationsSection({ integrations, onSaveIntegration }: Integra
               key={integration.id}
               type="button"
               onClick={() => setSelectedKey(integration.key)}
-              className={`rounded-3xl border p-4 text-left transition ${selected?.key === integration.key ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-white/10 bg-slate-950/50 hover:bg-slate-950/70'}`}
+              className={`rounded-3xl border p-4 text-left transition ${selected?.key === integration.key ? 'ring-1' : ''}`}
             >
               <div className="flex items-center justify-between gap-3">
-                <p className="font-medium text-white">{integration.key}</p>
+                <p className="font-medium">{integration.key}</p>
                 <Chip size="sm" variant="soft" color={integration.isEnabled ? 'success' : 'default'}>
                   {integration.isEnabled ? 'online' : 'offline'}
                 </Chip>
@@ -50,8 +50,8 @@ export function IntegrationsSection({ integrations, onSaveIntegration }: Integra
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Настройка</p>
-            <h2 className="text-xl font-semibold text-white">{selected?.key ?? 'Выберите интеграцию'}</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Настройка</p>
+            <h2 className="text-xl font-semibold">{selected?.key ?? 'Выберите интеграцию'}</h2>
           </div>
         </Card.Header>
         <Card.Content>
@@ -79,7 +79,7 @@ export function IntegrationsSection({ integrations, onSaveIntegration }: Integra
               </Button>
             </>
           ) : (
-            <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4 text-slate-300">Интеграции не загружены</div>
+            <div className="rounded-3xl border p-4">Интеграции не загружены</div>
           )}
         </Card.Content>
       </Card>

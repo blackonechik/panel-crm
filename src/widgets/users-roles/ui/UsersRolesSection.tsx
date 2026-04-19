@@ -30,16 +30,16 @@ export function UsersRolesSection({ users, roles, rolePermissions, onSaveRole }:
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Пользователи</p>
-            <h2 className="text-xl font-semibold text-white">Команда</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Пользователи</p>
+            <h2 className="text-xl font-semibold">Команда</h2>
           </div>
         </Card.Header>
         <Card.Content>
           {users.map((user) => (
-            <div key={user.id} className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
+            <div key={user.id} className="flex items-center justify-between gap-3 rounded-3xl border p-4">
               <div>
-                <p className="font-medium text-white">{user.name}</p>
-                <p className="text-sm text-slate-400">{user.email}</p>
+                <p className="font-medium">{user.name}</p>
+                <p className="text-sm">{user.email}</p>
               </div>
               <Chip size="sm" variant="soft" color="accent">
                 {user.role.name}
@@ -52,13 +52,13 @@ export function UsersRolesSection({ users, roles, rolePermissions, onSaveRole }:
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Роли</p>
-            <h2 className="text-xl font-semibold text-white">RBAC</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Роли</p>
+            <h2 className="text-xl font-semibold">RBAC</h2>
           </div>
         </Card.Header>
         <Card.Content>
           <div className="grid gap-2 md:grid-cols-2">
-            <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={selectedRole?.id ?? ''} onChange={(event) => setSelectedRoleId(event.target.value)}>
+            <select className="rounded-2xl border px-4 py-3" value={selectedRole?.id ?? ''} onChange={(event) => setSelectedRoleId(event.target.value)}>
               {roles.map((role) => (
                 <option key={role.id} value={role.id}>
                   {role.name}
@@ -68,9 +68,9 @@ export function UsersRolesSection({ users, roles, rolePermissions, onSaveRole }:
             <Input aria-label="Название роли" placeholder="Название роли" value={draftName} onChange={(event) => setDraftName(event.target.value)} />
           </div>
           <TextArea aria-label="Описание роли" placeholder="Описание роли" rows={3} variant="secondary" value={draftDescription} onChange={(event) => setDraftDescription(event.target.value)} />
-          <div className="grid gap-2 rounded-3xl border border-white/10 bg-slate-950/50 p-4 max-h-[360px] overflow-auto">
+          <div className="grid gap-2 rounded-3xl border p-4 max-h-[360px] overflow-auto">
             {rolePermissions.map((permission) => (
-              <label key={permission.id} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
+              <label key={permission.id} className="flex items-start gap-3 rounded-2xl border p-3">
                 <input
                   type="checkbox"
                   checked={permissions.includes(permission.code)}
@@ -82,8 +82,8 @@ export function UsersRolesSection({ users, roles, rolePermissions, onSaveRole }:
                   className="mt-1"
                 />
                 <div>
-                  <p className="font-medium text-white">{permission.code}</p>
-                  <p className="text-sm text-slate-400">{permission.description ?? 'Нет описания'}</p>
+                  <p className="font-medium">{permission.code}</p>
+                  <p className="text-sm">{permission.description ?? 'Нет описания'}</p>
                 </div>
               </label>
             ))}

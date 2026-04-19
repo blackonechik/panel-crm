@@ -37,10 +37,10 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
               <Card key={metric.label}>
                 <Card.Content>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-300">{metric.label}</span>
-                    <Icon className="h-5 w-5 text-slate-200/80" />
+                    <span className="text-sm">{metric.label}</span>
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <div className="text-3xl font-semibold text-white">{metric.value}</div>
+                  <div className="text-3xl font-semibold">{metric.value}</div>
                 </Card.Content>
               </Card>
             );
@@ -50,8 +50,8 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Очередь</p>
-              <h2 className="text-xl font-semibold text-white">Последние чаты</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Очередь</p>
+              <h2 className="text-xl font-semibold">Последние чаты</h2>
             </div>
             <Chip variant="soft" color="accent">
               {chats.length} активных
@@ -59,13 +59,13 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
           </Card.Header>
           <Card.Content>
             {chats.slice(0, 6).map((chat) => (
-              <div key={chat.id} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-cyan-400/15 text-sm font-semibold text-cyan-100">
+              <div key={chat.id} className="flex items-center gap-3 rounded-2xl border p-4">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-semibold">
                   {chat.client.fullName?.slice(0, 2).toUpperCase() ?? '??'}
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <p className="truncate font-medium text-white">{chat.client.fullName ?? 'Без имени'}</p>
+                    <p className="truncate font-medium">{chat.client.fullName ?? 'Без имени'}</p>
                     <Chip size="sm" variant="soft" color={chat.channel === 'TELEGRAM' ? 'accent' : 'default'}>
                       {chat.channel}
                     </Chip>
@@ -73,11 +73,11 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
                       {chat.status}
                     </Chip>
                   </div>
-                  <p className="truncate text-sm text-slate-400">
+                  <p className="truncate text-sm">
                     {chat.client.phone ?? chat.client.email ?? chat.externalChatId} · {chat._count.messages} сообщений
                   </p>
                 </div>
-                <div className="text-right text-xs text-slate-500">
+                <div className="text-right text-xs">
                   <p>{formatDateTime(chat.updatedAt)}</p>
                 </div>
               </div>
@@ -88,16 +88,16 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Лиды</p>
-              <h2 className="text-xl font-semibold text-white">Последние заявки</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Лиды</p>
+              <h2 className="text-xl font-semibold">Последние заявки</h2>
             </div>
           </Card.Header>
           <Card.Content>
             {leads.slice(0, 5).map((lead) => (
-              <div key={lead.id} className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={lead.id} className="flex items-center justify-between gap-3 rounded-2xl border p-4">
                 <div>
-                  <p className="font-medium text-white">{lead.fullName ?? 'Без имени'}</p>
-                  <p className="text-sm text-slate-400">{lead.interest ?? lead.comment ?? 'Без комментария'}</p>
+                  <p className="font-medium">{lead.fullName ?? 'Без имени'}</p>
+                  <p className="text-sm">{lead.interest ?? lead.comment ?? 'Без комментария'}</p>
                 </div>
                 <Chip variant="soft" color={statusChipColor(lead.status)}>
                   {lead.status}
@@ -112,21 +112,21 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">События</p>
-              <h2 className="text-xl font-semibold text-white">Уведомления</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">События</p>
+              <h2 className="text-xl font-semibold">Уведомления</h2>
             </div>
           </Card.Header>
           <Card.Content>
             {notifications.slice(0, 6).map((notification) => (
-              <div key={notification.id} className="rounded-2xl border border-white/10 bg-slate-950/50 p-4">
+              <div key={notification.id} className="rounded-2xl border p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-medium text-white">{notification.title}</p>
+                  <p className="font-medium">{notification.title}</p>
                   <Chip size="sm" variant="soft" color={notification.isRead ? 'default' : 'warning'}>
                     {notification.isRead ? 'прочитано' : 'новое'}
                   </Chip>
                 </div>
-                <p className="mt-2 text-sm text-slate-400">{notification.body}</p>
-                <p className="mt-3 text-xs text-slate-500">{formatDateTime(notification.createdAt)}</p>
+                <p className="mt-2 text-sm">{notification.body}</p>
+                <p className="mt-3 text-xs">{formatDateTime(notification.createdAt)}</p>
               </div>
             ))}
           </Card.Content>
@@ -135,22 +135,22 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
         <Card>
           <Card.Header>
             <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Статистика</p>
-              <h2 className="text-xl font-semibold text-white">SLA и качество</h2>
+              <p className="text-sm uppercase tracking-[0.22em]">Статистика</p>
+              <h2 className="text-xl font-semibold">SLA и качество</h2>
             </div>
           </Card.Header>
           <Card.Content>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-              <span className="text-slate-300">Среднее первое время ответа</span>
-              <span className="font-semibold text-white">{overview?.sla.averageFirstResponseMinutes ?? 0} мин</span>
+            <div className="flex items-center justify-between rounded-2xl border p-4">
+              <span>Среднее первое время ответа</span>
+              <span className="font-semibold">{overview?.sla.averageFirstResponseMinutes ?? 0} мин</span>
             </div>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-              <span className="text-slate-300">Завершённые чаты</span>
-              <span className="font-semibold text-white">{overview?.chats.completed ?? 0}</span>
+            <div className="flex items-center justify-between rounded-2xl border p-4">
+              <span>Завершённые чаты</span>
+              <span className="font-semibold">{overview?.chats.completed ?? 0}</span>
             </div>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
-              <span className="text-slate-300">Успешная база знаний</span>
-              <span className="font-semibold text-white">{overview?.faq.usageCount ?? 0}</span>
+            <div className="flex items-center justify-between rounded-2xl border p-4">
+              <span>Успешная база знаний</span>
+              <span className="font-semibold">{overview?.faq.usageCount ?? 0}</span>
             </div>
           </Card.Content>
         </Card>

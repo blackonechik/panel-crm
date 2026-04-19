@@ -32,8 +32,8 @@ export function LeadsSection({ leads }: LeadsSectionProps) {
         {stats.map((stat) => (
           <Card key={stat.label}>
             <Card.Content>
-              <p className="text-sm text-slate-300">{stat.label}</p>
-              <p className="text-3xl font-semibold text-white">{stat.value}</p>
+              <p className="text-sm">{stat.label}</p>
+              <p className="text-3xl font-semibold">{stat.value}</p>
             </Card.Content>
           </Card>
         ))}
@@ -42,16 +42,16 @@ export function LeadsSection({ leads }: LeadsSectionProps) {
       <Card>
         <Card.Header>
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Лиды</p>
-            <h2 className="text-xl font-semibold text-white">Активные заявки</h2>
+            <p className="text-sm uppercase tracking-[0.22em]">Лиды</p>
+            <h2 className="text-xl font-semibold">Активные заявки</h2>
           </div>
         </Card.Header>
         <Card.Content>
           {leads.map((lead) => (
-            <div key={lead.id} className="grid gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4 xl:grid-cols-[1.2fr_0.8fr]">
+            <div key={lead.id} className="grid gap-3 rounded-3xl border p-4 xl:grid-cols-[1.2fr_0.8fr]">
               <div className="grid gap-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-medium text-white">{lead.fullName ?? 'Без имени'}</p>
+                  <p className="font-medium">{lead.fullName ?? 'Без имени'}</p>
                   <Chip size="sm" variant="soft" color={statusChipColor(lead.status)}>
                     {STATUS_LABELS[lead.status] ?? lead.status}
                   </Chip>
@@ -59,23 +59,23 @@ export function LeadsSection({ leads }: LeadsSectionProps) {
                     {lead.channel}
                   </Chip>
                 </div>
-                <p className="text-sm text-slate-400">{lead.interest ?? lead.comment ?? 'Интерес не указан'}</p>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm">{lead.interest ?? lead.comment ?? 'Интерес не указан'}</p>
+                <p className="text-sm">
                   {lead.phone ?? 'Телефон не указан'} · {lead.email ?? 'Email не указан'}
                 </p>
               </div>
-              <div className="grid gap-2 text-sm text-slate-300">
+              <div className="grid gap-2 text-sm">
                 <div className="flex items-center justify-between gap-3">
                   <span>Источник</span>
-                  <span className="text-white">{lead.source ?? '—'}</span>
+                  <span>{lead.source ?? '—'}</span>
                 </div>
                 <div className="flex items-center justify-between gap-3">
                   <span>Создан</span>
-                  <span className="text-white">{formatDateTime(lead.createdAt)}</span>
+                  <span>{formatDateTime(lead.createdAt)}</span>
                 </div>
                 <div className="flex items-center justify-between gap-3">
                   <span>Назначен</span>
-                  <span className="text-white">{lead.assignedUser?.name ?? 'Не назначен'}</span>
+                  <span>{lead.assignedUser?.name ?? 'Не назначен'}</span>
                 </div>
               </div>
             </div>
