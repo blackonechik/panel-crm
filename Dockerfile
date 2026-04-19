@@ -20,6 +20,7 @@ ENV NODE_ENV=production
 ENV PORT=4173
 
 COPY package.json package-lock.json ./
+COPY vite.config.ts ./
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 
