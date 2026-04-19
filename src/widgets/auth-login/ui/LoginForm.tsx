@@ -20,13 +20,13 @@ export function LoginForm({
   onSubmit
 }: LoginFormProps) {
   return (
-    <Card className="border border-white/10 bg-white/95 text-slate-950 shadow-2xl shadow-cyan-950/30">
-      <Card.Header className="flex flex-col gap-2 px-8 pt-8">
+    <Card>
+      <Card.Header>
         <p className="text-sm uppercase tracking-[0.24em] text-slate-500">Вход в систему</p>
         <h2 className="text-2xl font-semibold">Зайти в панель</h2>
         <p className="text-sm text-slate-500">Для первого входа используй seed-аккаунт из backend.</p>
       </Card.Header>
-      <Card.Content className="gap-4 px-8 pb-8">
+      <Card.Content>
         <Input aria-label="Email" placeholder="Email" value={email} onChange={(event) => onEmailChange(event.target.value)} />
         <Input
           aria-label="Пароль"

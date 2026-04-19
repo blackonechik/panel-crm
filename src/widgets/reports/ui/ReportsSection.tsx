@@ -22,23 +22,43 @@ export function ReportsSection({ overview, chats, leads, users, from, to, onPeri
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Отчёты</p>
             <h2 className="text-xl font-semibold text-white">Аналитика и экспорт</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           <div className="grid gap-3 md:grid-cols-2">
             <Input aria-label="Период от" type="date" value={from} onChange={(event) => void onPeriodChange(event.target.value, to)} />
             <Input aria-label="Период до" type="date" value={to} onChange={(event) => void onPeriodChange(from, event.target.value)} />
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <Card className="border border-white/10 bg-slate-950/50"><Card.Content className="p-4"><p className="text-sm text-slate-300">Обращения</p><p className="text-3xl font-semibold text-white">{overview?.chats.total ?? 0}</p></Card.Content></Card>
-            <Card className="border border-white/10 bg-slate-950/50"><Card.Content className="p-4"><p className="text-sm text-slate-300">Новые лиды</p><p className="text-3xl font-semibold text-white">{overview?.leads.total ?? 0}</p></Card.Content></Card>
-            <Card className="border border-white/10 bg-slate-950/50"><Card.Content className="p-4"><p className="text-sm text-slate-300">Конверсия</p><p className="text-3xl font-semibold text-white">{overview?.leads.conversionToLeadPercent ?? 0}%</p></Card.Content></Card>
-            <Card className="border border-white/10 bg-slate-950/50"><Card.Content className="p-4"><p className="text-sm text-slate-300">Срочные</p><p className="text-3xl font-semibold text-white">{overview?.chats.urgent ?? 0}</p></Card.Content></Card>
+            <Card>
+              <Card.Content>
+                <p className="text-sm text-slate-300">Обращения</p>
+                <p className="text-3xl font-semibold text-white">{overview?.chats.total ?? 0}</p>
+              </Card.Content>
+            </Card>
+            <Card>
+              <Card.Content>
+                <p className="text-sm text-slate-300">Новые лиды</p>
+                <p className="text-3xl font-semibold text-white">{overview?.leads.total ?? 0}</p>
+              </Card.Content>
+            </Card>
+            <Card>
+              <Card.Content>
+                <p className="text-sm text-slate-300">Конверсия</p>
+                <p className="text-3xl font-semibold text-white">{overview?.leads.conversionToLeadPercent ?? 0}%</p>
+              </Card.Content>
+            </Card>
+            <Card>
+              <Card.Content>
+                <p className="text-sm text-slate-300">Срочные</p>
+                <p className="text-3xl font-semibold text-white">{overview?.chats.urgent ?? 0}</p>
+              </Card.Content>
+            </Card>
           </div>
           <div className="grid gap-3 md:grid-cols-2">
             <div className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
@@ -66,14 +86,14 @@ export function ReportsSection({ overview, chats, leads, users, from, to, onPeri
       </Card>
 
       <div className="grid gap-6">
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Нагрузка</p>
               <h2 className="text-xl font-semibold text-white">По сотрудникам</h2>
             </div>
           </Card.Header>
-          <Card.Content className="grid gap-3 px-5 pb-5">
+          <Card.Content>
             {loadByUser.map((item) => (
               <div key={item.name} className="flex items-center justify-between rounded-3xl border border-white/10 bg-slate-950/50 p-4">
                 <span className="text-slate-200">{item.name}</span>
@@ -83,14 +103,14 @@ export function ReportsSection({ overview, chats, leads, users, from, to, onPeri
           </Card.Content>
         </Card>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">История</p>
               <h2 className="text-xl font-semibold text-white">Последние обращения</h2>
             </div>
           </Card.Header>
-          <Card.Content className="grid gap-3 px-5 pb-5">
+          <Card.Content>
             {chats.slice(0, 6).map((chat) => (
               <div key={chat.id} className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
                 <p className="font-medium text-white">{chat.client.fullName ?? 'Без имени'}</p>
@@ -100,14 +120,14 @@ export function ReportsSection({ overview, chats, leads, users, from, to, onPeri
           </Card.Content>
         </Card>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Лиды</p>
               <h2 className="text-xl font-semibold text-white">Статистика</h2>
             </div>
           </Card.Header>
-          <Card.Content className="grid gap-3 px-5 pb-5">
+          <Card.Content>
             <p className="text-sm text-slate-300">Всего лидов: {leads.length}</p>
             <p className="text-sm text-slate-300">Назначенных чатов: {assignedChats.length}</p>
             <p className="text-sm text-slate-300">С последним обновлением: {overview ? formatDateTime(overview.period.to) : '—'}</p>

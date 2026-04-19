@@ -13,14 +13,14 @@ type SidebarProps = {
 export function Sidebar({ userName, userRole, permissions, onLogout }: SidebarProps) {
   return (
     <aside className="hidden w-[290px] shrink-0 lg:block">
-      <Card className="sticky top-6 border border-white/10 bg-white/5 backdrop-blur-xl">
-        <Card.Content className="gap-6 p-5">
+      <Card>
+        <Card.Content>
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-400/20 text-cyan-300">
               <span className="text-lg font-semibold">B</span>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/70">Bot CRM</p>
+              <p className="text-xs uppercase text-cyan-200/70">Bot CRM</p>
               <p className="font-semibold text-white">Панель оператора</p>
             </div>
           </div>
@@ -44,7 +44,7 @@ export function Sidebar({ userName, userRole, permissions, onLogout }: SidebarPr
 
           <div className="rounded-3xl border border-white/10 bg-slate-950/60 p-4">
             <div className="flex items-center gap-3">
-              <Avatar color="accent" variant="soft" className="h-11 w-11">
+              <Avatar>
                 <Avatar.Fallback>{initials(userName)}</Avatar.Fallback>
               </Avatar>
               <div className="min-w-0">

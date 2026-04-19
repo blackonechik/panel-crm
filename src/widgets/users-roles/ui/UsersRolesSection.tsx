@@ -27,14 +27,14 @@ export function UsersRolesSection({ users, roles, rolePermissions, onSaveRole }:
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_1fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Пользователи</p>
             <h2 className="text-xl font-semibold text-white">Команда</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-3 px-5 pb-5">
+        <Card.Content>
           {users.map((user) => (
             <div key={user.id} className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
               <div>
@@ -49,14 +49,14 @@ export function UsersRolesSection({ users, roles, rolePermissions, onSaveRole }:
         </Card.Content>
       </Card>
 
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Роли</p>
             <h2 className="text-xl font-semibold text-white">RBAC</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           <div className="grid gap-2 md:grid-cols-2">
             <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={selectedRole?.id ?? ''} onChange={(event) => setSelectedRoleId(event.target.value)}>
               {roles.map((role) => (

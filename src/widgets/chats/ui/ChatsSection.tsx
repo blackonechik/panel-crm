@@ -96,8 +96,8 @@ export function ChatsSection({
 
   return (
     <div className="grid gap-6 xl:grid-cols-[320px_1fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="flex items-center justify-between px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Очередь</p>
             <h2 className="text-xl font-semibold text-white">Все чаты</h2>
@@ -106,7 +106,7 @@ export function ChatsSection({
             {filteredChats.length}
           </Chip>
         </Card.Header>
-        <Card.Content className="grid gap-3 px-5 pb-5">
+        <Card.Content>
           <Input aria-label="Поиск чатов" placeholder="Имя, телефон, username, канал" value={search} onChange={(event) => setSearch(event.target.value)} />
           <div className="grid gap-3 md:grid-cols-2">
             <select className="rounded-2xl border border-white/10 bg-slate-950 px-4 py-3 text-slate-100" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
@@ -166,8 +166,8 @@ export function ChatsSection({
       </Card>
 
       <div className="grid gap-6">
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="flex items-center justify-between gap-4 px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Диалог</p>
               <h2 className="text-xl font-semibold text-white">{chat?.client.fullName ?? 'Выберите чат'}</h2>
@@ -187,12 +187,12 @@ export function ChatsSection({
             ) : null}
           </Card.Header>
 
-          <Card.Content className="grid gap-6 px-5 pb-5">
+          <Card.Content>
             {chat ? (
               <>
                 <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-                  <Card className="border border-white/10 bg-slate-950/50">
-                    <Card.Content className="grid gap-3 p-4">
+                  <Card>
+                    <Card.Content>
                       <div className="flex flex-wrap gap-3">
                         <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                           <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Клиент</p>
@@ -223,8 +223,8 @@ export function ChatsSection({
                     </Card.Content>
                   </Card>
 
-                  <Card className="border border-white/10 bg-slate-950/50">
-                    <Card.Content className="grid gap-4 p-4">
+                  <Card>
+                    <Card.Content>
                       <div className="grid grid-cols-2 gap-3">
                         <label className="grid gap-2 text-sm text-slate-300">
                           <span>Статус чата</span>
@@ -257,11 +257,11 @@ export function ChatsSection({
                 </div>
 
                 <div className="grid gap-4 xl:grid-cols-[1fr_320px]">
-                  <Card className="border border-white/10 bg-slate-950/50">
-                    <Card.Header className="px-4 pt-4">
+                  <Card>
+                    <Card.Header>
                       <h3 className="text-lg font-semibold text-white">Сообщения</h3>
                     </Card.Header>
-                    <Card.Content className="grid gap-3 px-4 pb-4">
+                    <Card.Content>
                       <div className="max-h-[560px] space-y-3 overflow-auto pr-1">
                         {chat.messages.map((message) => (
                           <div key={message.id} className={`flex ${message.direction === 'OUTBOUND' ? 'justify-end' : 'justify-start'}`}>
@@ -301,11 +301,11 @@ export function ChatsSection({
                     </Card.Content>
                   </Card>
 
-                  <Card className="border border-white/10 bg-slate-950/50">
-                    <Card.Header className="px-4 pt-4">
+                  <Card>
+                    <Card.Header>
                       <h3 className="text-lg font-semibold text-white">Карточка клиента</h3>
                     </Card.Header>
-                    <Card.Content className="grid gap-4 px-4 pb-4">
+                    <Card.Content>
                       <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
                         <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Контакты</p>
                         <p className="mt-2 text-sm text-white">{chat.client.fullName ?? '—'}</p>

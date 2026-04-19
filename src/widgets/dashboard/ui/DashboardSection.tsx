@@ -34,8 +34,8 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
           {metrics.map((metric) => {
             const Icon = metric.icon;
             return (
-              <Card key={metric.label} className={`border ${metric.accent ? 'border-cyan-400/20 bg-cyan-400/10' : 'border-white/10 bg-white/5'} backdrop-blur-sm`}>
-                <Card.Content className="gap-3 p-5">
+              <Card key={metric.label}>
+                <Card.Content>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-slate-300">{metric.label}</span>
                     <Icon className="h-5 w-5 text-slate-200/80" />
@@ -47,8 +47,8 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
           })}
         </div>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="flex items-center justify-between px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Очередь</p>
               <h2 className="text-xl font-semibold text-white">Последние чаты</h2>
@@ -57,7 +57,7 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
               {chats.length} активных
             </Chip>
           </Card.Header>
-          <Card.Content className="gap-3 px-5 pb-5">
+          <Card.Content>
             {chats.slice(0, 6).map((chat) => (
               <div key={chat.id} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-cyan-400/15 text-sm font-semibold text-cyan-100">
@@ -85,14 +85,14 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
           </Card.Content>
         </Card>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Лиды</p>
               <h2 className="text-xl font-semibold text-white">Последние заявки</h2>
             </div>
           </Card.Header>
-          <Card.Content className="gap-3 px-5 pb-5">
+          <Card.Content>
             {leads.slice(0, 5).map((lead) => (
               <div key={lead.id} className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-4">
                 <div>
@@ -109,14 +109,14 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
       </div>
 
       <div className="grid gap-6">
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">События</p>
               <h2 className="text-xl font-semibold text-white">Уведомления</h2>
             </div>
           </Card.Header>
-          <Card.Content className="gap-3 px-5 pb-5">
+          <Card.Content>
             {notifications.slice(0, 6).map((notification) => (
               <div key={notification.id} className="rounded-2xl border border-white/10 bg-slate-950/50 p-4">
                 <div className="flex items-center justify-between gap-3">
@@ -132,14 +132,14 @@ export function DashboardSection({ overview, chats, leads, notifications }: Dash
           </Card.Content>
         </Card>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Статистика</p>
               <h2 className="text-xl font-semibold text-white">SLA и качество</h2>
             </div>
           </Card.Header>
-          <Card.Content className="gap-3 px-5 pb-5">
+          <Card.Content>
             <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-slate-950/50 p-4">
               <span className="text-slate-300">Среднее первое время ответа</span>
               <span className="font-semibold text-white">{overview?.sla.averageFirstResponseMinutes ?? 0} мин</span>

@@ -21,14 +21,14 @@ export function IntegrationsSection({ integrations, onSaveIntegration }: Integra
 
   return (
     <div className="grid gap-6 xl:grid-cols-[320px_1fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Интеграции</p>
             <h2 className="text-xl font-semibold text-white">Каналы и сервисы</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-3 px-5 pb-5">
+        <Card.Content>
           {integrations.map((integration) => (
             <button
               key={integration.id}
@@ -47,14 +47,14 @@ export function IntegrationsSection({ integrations, onSaveIntegration }: Integra
         </Card.Content>
       </Card>
 
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Настройка</p>
             <h2 className="text-xl font-semibold text-white">{selected?.key ?? 'Выберите интеграцию'}</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           {selected ? (
             <>
               <div className="flex flex-wrap items-center gap-2">

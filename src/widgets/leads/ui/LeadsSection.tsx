@@ -30,8 +30,8 @@ export function LeadsSection({ leads }: LeadsSectionProps) {
     <div className="grid gap-6">
       <div className="grid gap-4 md:grid-cols-4">
         {stats.map((stat) => (
-          <Card key={stat.label} className="border border-white/10 bg-white/5">
-            <Card.Content className="gap-2 p-5">
+          <Card key={stat.label}>
+            <Card.Content>
               <p className="text-sm text-slate-300">{stat.label}</p>
               <p className="text-3xl font-semibold text-white">{stat.value}</p>
             </Card.Content>
@@ -39,14 +39,14 @@ export function LeadsSection({ leads }: LeadsSectionProps) {
         ))}
       </div>
 
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Лиды</p>
             <h2 className="text-xl font-semibold text-white">Активные заявки</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-3 px-5 pb-5">
+        <Card.Content>
           {leads.map((lead) => (
             <div key={lead.id} className="grid gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4 xl:grid-cols-[1.2fr_0.8fr]">
               <div className="grid gap-2">

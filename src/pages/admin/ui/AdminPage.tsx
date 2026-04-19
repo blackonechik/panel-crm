@@ -54,7 +54,7 @@ type AdminPageProps = {
   workspace: WorkspaceState;
   workspaceLoading: boolean;
   workspaceError: string | null;
-  connectedChannels: string[];
+  connectedChannels: Array<{ key: string; label: string; isEnabled: boolean }>;
   selectedClientId: string | null;
   chatMessage: string;
   setChatMessage: (value: string) => void;
@@ -165,23 +165,17 @@ export function AdminPage({
         />
 
         <main className="flex-1 pb-6">
-          <Card className="mb-6 border border-white/10 bg-white/5 backdrop-blur-xl">
-            <Card.Content className="gap-4 p-4 lg:p-5">
+          <Card>
+            <Card.Content>
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.28em] text-cyan-200/70">Управление обращениями</p>
+                  <p className="text-xs uppercase text-cyan-200/70">Управление обращениями</p>
                   <h1 className="text-2xl font-semibold text-white">{SECTION_TITLES[currentSection]}</h1>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Chip variant="soft" color="success">
-                    Backend онлайн
-                  </Chip>
-                  <Chip variant="soft" color="accent">
-                    Telegram / MAX
-                  </Chip>
                   {connectedChannels.map((channel) => (
-                    <Chip key={channel} variant="soft" color="default">
-                      {channel}
+                    <Chip key={channel.key} variant="soft" color={channel.isEnabled ? 'success' : 'default'}>
+                      {channel.label}: {channel.isEnabled ? 'активен' : 'неактивен'}
                     </Chip>
                   ))}
                 </div>
@@ -206,8 +200,8 @@ export function AdminPage({
           </Card>
 
           {workspaceError ? (
-            <Card className="mb-6 border border-red-500/20 bg-red-500/10">
-              <Card.Content className="flex-row items-center gap-3 p-4 text-red-100">
+            <Card>
+              <Card.Content>
                 <AlertCircle className="h-5 w-5" />
                 <span>{workspaceError}</span>
               </Card.Content>
@@ -215,8 +209,8 @@ export function AdminPage({
           ) : null}
 
           {workspaceLoading ? (
-            <Card className="mb-6 border border-white/10 bg-white/5">
-              <Card.Content className="p-6 text-slate-300">Загружаю данные панели...</Card.Content>
+            <Card>
+              <Card.Content>Загружаю данные панели...</Card.Content>
             </Card>
           ) : null}
 

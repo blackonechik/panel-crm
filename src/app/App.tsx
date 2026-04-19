@@ -22,11 +22,17 @@ export default function App() {
   }, [chatRouteMatch?.params.chatId, selectedChatId, setSelectedChatId]);
 
   const connectedChannels = [
-    state.workspace.integrations.find((item) => item.key === 'telegram'),
-    state.workspace.integrations.find((item) => item.key === 'max')
-  ]
-    .filter(Boolean)
-    .map((item) => item?.key ?? '');
+    {
+      key: 'telegram',
+      label: 'Telegram',
+      isEnabled: state.workspace.integrations.find((item) => item.key === 'telegram')?.isEnabled ?? false
+    },
+    {
+      key: 'max',
+      label: 'MAX',
+      isEnabled: state.workspace.integrations.find((item) => item.key === 'max')?.isEnabled ?? false
+    }
+  ];
 
   if (!state.session) {
     return (

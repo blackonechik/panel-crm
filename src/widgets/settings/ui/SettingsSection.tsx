@@ -28,14 +28,14 @@ export function SettingsSection({
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Клиника</p>
             <h2 className="text-xl font-semibold text-white">Профиль и тексты</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           {profile ? (
             <>
               <Input aria-label="Название клиники" placeholder="Название клиники" value={profile.name} onChange={(event) => updateProfile({ name: event.target.value })} />
@@ -77,14 +77,14 @@ export function SettingsSection({
       </Card>
 
       <div className="grid gap-6">
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Интеграции</p>
               <h2 className="text-xl font-semibold text-white">Telegram / MAX</h2>
             </div>
           </Card.Header>
-          <Card.Content className="grid gap-3 px-5 pb-5">
+          <Card.Content>
             {integrations.map((integration) => (
               <div key={integration.id} className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
                 <div>
@@ -99,14 +99,14 @@ export function SettingsSection({
           </Card.Content>
         </Card>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Команда</p>
               <h2 className="text-xl font-semibold text-white">Пользователи и роли</h2>
             </div>
           </Card.Header>
-          <Card.Content className="grid gap-4 px-5 pb-5">
+          <Card.Content>
             <div className="grid gap-2">
               {users.map((user) => (
                 <div key={user.id} className="flex items-center justify-between gap-3 rounded-3xl border border-white/10 bg-slate-950/50 p-4">
@@ -137,14 +137,14 @@ export function SettingsSection({
           </Card.Content>
         </Card>
 
-        <Card className="border border-white/10 bg-white/5">
-          <Card.Header className="px-5 pt-5">
+        <Card>
+          <Card.Header>
             <div>
               <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">События</p>
               <h2 className="text-xl font-semibold text-white">Последние уведомления</h2>
             </div>
           </Card.Header>
-          <Card.Content className="grid gap-3 px-5 pb-5">
+          <Card.Content>
             {notifications.slice(0, 5).map((notification) => (
               <div key={notification.id} className="rounded-3xl border border-white/10 bg-slate-950/50 p-4">
                 <div className="flex items-center justify-between gap-3">

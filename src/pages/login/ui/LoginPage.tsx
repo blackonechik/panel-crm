@@ -17,14 +17,14 @@ export function LoginPage({ email, password, loading, error, onEmailChange, onPa
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.20),_transparent_30%),radial-gradient(circle_at_top_right,_rgba(168,85,247,0.16),_transparent_30%),linear-gradient(180deg,#020617_0%,#0f172a_100%)] text-slate-100">
       <div className="mx-auto flex min-h-screen max-w-6xl items-center px-4 py-10">
         <div className="grid w-full gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="border border-white/10 bg-white/5 backdrop-blur-xl">
-            <Card.Content className="gap-6 p-8 lg:p-10">
+          <Card>
+            <Card.Content>
               <div className="flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-400/20 text-cyan-300">
                   <Bot className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-sm uppercase tracking-[0.28em] text-cyan-200/70">Bot CRM</p>
+                  <p className="text-sm uppercase text-cyan-200/70">Bot CRM</p>
                   <h1 className="text-3xl font-semibold text-white">Операторская панель для Telegram и MAX</h1>
                 </div>
               </div>
@@ -35,8 +35,8 @@ export function LoginPage({ email, password, loading, error, onEmailChange, onPa
                   ['2 канала', 'Telegram и MAX'],
                   ['RBAC', 'Роли и права доступа']
                 ].map(([value, label]) => (
-                  <Card key={value} className="border border-white/10 bg-slate-950/60">
-                    <Card.Content className="gap-1 p-4">
+                  <Card key={value}>
+                    <Card.Content>
                       <p className="text-2xl font-semibold text-white">{value}</p>
                       <p className="text-sm text-slate-300">{label}</p>
                     </Card.Content>

@@ -31,14 +31,14 @@ export function ClientsSection({ clients, onSaveClient, selectedClientId = null,
 
   return (
     <div className="grid gap-6 xl:grid-cols-[320px_1fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Клиенты</p>
             <h2 className="text-xl font-semibold text-white">База клиентов</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-3 px-5 pb-5">
+        <Card.Content>
           <Input aria-label="Поиск клиентов" placeholder="Имя, телефон, email, username" value={query} onChange={(event) => setQuery(event.target.value)} />
           {filtered.map((client) => (
             <button
@@ -61,14 +61,14 @@ export function ClientsSection({ clients, onSaveClient, selectedClientId = null,
         </Card.Content>
       </Card>
 
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Карточка клиента</p>
             <h2 className="text-xl font-semibold text-white">{draft?.fullName ?? 'Выберите клиента'}</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           {draft ? (
             <>
               <div className="grid gap-3 md:grid-cols-2">

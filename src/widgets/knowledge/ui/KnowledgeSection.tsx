@@ -36,14 +36,14 @@ export function KnowledgeSection({
 }: KnowledgeSectionProps) {
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">FAQ</p>
             <h2 className="text-xl font-semibold text-white">База знаний</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           <div className="grid gap-3">
             <Input aria-label="Вопрос" placeholder="Вопрос" value={faqQuestion} onChange={(event) => setFaqQuestion(event.target.value)} />
             <TextArea
@@ -78,14 +78,14 @@ export function KnowledgeSection({
         </Card.Content>
       </Card>
 
-      <Card className="border border-white/10 bg-white/5">
-        <Card.Header className="px-5 pt-5">
+      <Card>
+        <Card.Header>
           <div>
             <p className="text-sm uppercase tracking-[0.22em] text-cyan-200/70">Сценарии</p>
             <h2 className="text-xl font-semibold text-white">Диалоговые ветки</h2>
           </div>
         </Card.Header>
-        <Card.Content className="grid gap-4 px-5 pb-5">
+        <Card.Content>
           <div className="grid gap-3">
             <Input aria-label="Код сценария" placeholder="Код сценария" value={scenarioCode} onChange={(event) => setScenarioCode(event.target.value)} />
             <Input aria-label="Название" placeholder="Название" value={scenarioTitle} onChange={(event) => setScenarioTitle(event.target.value)} />
